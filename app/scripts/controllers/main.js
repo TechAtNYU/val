@@ -3,7 +3,7 @@
 angular.module('hackvdayApp')
   .controller('MainCtrl', function ($scope, $location, $anchorScroll, $firebase) {
     $scope.phoneValidation = /^\d{10}$/;
-    $scope.deliveries = $firebase(new Firebase('https://brilliant-fire-2550.firebaseio.com/deliveries'));
+    $scope.deliveries = $firebase(new Firebase('https://techatnyuval.firebaseio.com//deliveries'));
     $scope.delivery = {};
     $scope.dorms = [
         'Alumni Hall', 'Brittany Hall', 'Broome Street', 'Carlyle Court',
