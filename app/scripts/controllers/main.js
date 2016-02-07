@@ -1,9 +1,10 @@
 'use strict';
 
 angular.module('hackvdayApp')
-  .controller('MainCtrl', function ($scope, $location, $anchorScroll, $firebase) {
+  .controller('MainCtrl', function ($scope, $location, $anchorScroll, $firebaseArray, $firebaseObject) {
     $scope.phoneValidation = /^\d{10}$/;
-    $scope.deliveries = $firebase(new Firebase('https://techatnyuval.firebaseio.com//deliveries'));
+    var ref = new Firebase('https://techatnyuval.firebaseio.com/deliveries');
+    $scope.deliveries = $firebaseArray(ref);
     $scope.delivery = {};
     $scope.dorms = [
         'Alumni Hall', 'Brittany Hall', 'Broome Street', 'Carlyle Court',
