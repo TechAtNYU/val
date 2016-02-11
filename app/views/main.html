@@ -1,5 +1,5 @@
 <div id="top" class="header">
-  <img id="logo" src="../images/tech_at_nyu_logo.png" class="img-responsive" alt="Tech@NYU"/>
+  <div id="heart" style="text-align: center;"></div>
 </div>
 
 <div id="thanks" ng-show="formSuccess">
@@ -9,7 +9,6 @@
     confirmation text shortly. ♥♥
   </p>
 </div>
-
 <div id="main">
   <h1>Git a rose!</h1>
   <p>
@@ -68,5 +67,80 @@
 </form>
 
 <div class="footer">
+  <img id="logo" src="../images/tech_at_nyu_logo.png" alt="Tech@NYU"/>
   <p>♥ Happy Valentine's Day from Tech@NYU</p>
 </div>
+
+<script>
+     var w = 450,
+         h = 200,
+         piece = 15;
+     var svg = d3.select("#heart").append("svg");
+     svg.attr('width', w)
+         .attr('height', h);
+     //x,y pairs that contain coordiantes to each square
+     //will also contain color attributes
+     var coordinates = [
+         {x: 5*piece, y: 5*piece, color: "#7f0000", rank: 1}, {x: 6*piece, y: 5*piece, color: "#990000", rank: 2},
+         {x: 4*piece, y: 5*piece, color: "#8e0f0b", rank: 2}, {x: 5*piece, y: 6*piece, color: "#5d1a1b", rank: 2},
+         {x: 5*piece, y: 4*piece, color: "#e50000", rank: 2}, {x: 6*piece, y: 6*piece, color: "#990000", rank: 3},
+         {x: 4*piece, y: 6*piece,color: "#690100", rank : 3}, {x: 4*piece, y: 4*piece, color: "#cc0000", rank: 3},
+         {x: 6*piece, y: 4*piece, color: "#f44622", rank: 3}, {x: 5*piece, y: 7*piece, color: "#340000", rank: 4},
+         {x: 3*piece, y: 5*piece, color: "#8e0f0b", rank : 4},{x: 7*piece, y: 5*piece, color: "#e50000", rank: 4},
+         {x: 7*piece, y: 4*piece, color: "#ff4c4c", rank : 4},{x: 3*piece, y: 4*piece, color: "#ac0500", rank: 4},
+         {x: 6*piece, y: 3*piece, color: "#df351f", rank: 5}, {x: 7*piece, y: 3*piece, color: "#fa5724", rank: 5},
+         {x: 3*piece, y: 3*piece, color: "#bf1000", rank: 5}, {x: 4*piece, y: 3*piece, color: "#f84010", rank: 5},
+         {x: 8*piece, y: 4*piece, color: "#ff4c4c", rank: 6}, {x: 2*piece, y: 4*piece, color: "#ac0500", rank: 6},
+         {x: 8*piece, y: 3*piece, color: "#f77c2a", rank: 6}, {x: 2*piece, y: 3*piece, color: "#8e0f0b", rank: 6},
+         {x: 7*piece, y: 2*piece, color: "#df351f", rank: 6}, {x: 8*piece, y: 2*piece, color: "#f77c2a", rank: 6},
+         {x: 2*piece, y: 2*piece, color: "#8e0500", rank: 6},
+         {x: 3*piece, y: 2*piece, color: "#8e1918", rank: 6}, {x: 5*piece, y: 8*piece, color: "#340000", rank: 7},
+         {x: 6*piece, y: 7*piece, color: "#5d1a1b", rank: 8},
+         {x: 4*piece, y: 7*piece, color: "#340000", rank: 8}, {x: 7*piece, y: 6*piece, color: "#a80700", rank: 9},
+         {x: 3*piece, y: 6*piece, color: "#690100", rank: 9},{x: 8*piece, y: 5*piece, color: "#e50000", rank: 10},
+         {x: 2*piece, y: 5*piece, color: "#660000", rank: 10},{x:9*piece, y: 4*piece, color: "#ffd27f", rank: 11},
+         {x: 1*piece, y: 4*piece, color: "#690100", rank: 11}, {x: 9*piece, y: 3*piece, color: "#f77c2a", rank: 12},
+         {x: 1*piece, y: 3*piece, color: "#690100", rank: 12}, {x: 9*piece, y: 2*piece, color: "#ffd27f", rank: 13},
+         {x: 1*piece, y: 2*piece, color: "#740100", rank: 13},
+         {x: 2*piece, y: 1*piece, color: "#8e1a19", rank: 14}, {x: 3*piece, y: 1*piece, color: "#ac0500", rank: 15},
+         {x: 7*piece, y: 1*piece, color: "#f73f0c", rank: 15}, {x: 8*piece, y: 1*piece, color: "#fa5f27", rank: 14},
+         {x: 4*piece, y: 2*piece, color: "#ca1300", rank: 16}, {x: 6*piece, y: 2*piece, color: "#f34f2b", rank: 16},
+         {x: 5*piece, y: 3*piece, color: "#f04222", rank: 17}
+     ];
+
+     svg.selectAll("rect").data(coordinates)
+       .enter().append("rect")
+       .attr("x", function(d){
+         return d.x;
+       })
+       .attr("y", function(d){
+         return 0;
+       })
+       .attr("rx", 2)
+       .attr("ry", 2)
+       .attr("fill", function(d){
+         return d.color;
+       })
+       .attr("width", piece += Math.random()*2)
+       .attr("height", piece += Math.random()*2)
+       .attr("stroke", "none")
+       .style("opacity", 0);
+
+       svg.selectAll("rect")
+           .transition()
+           .delay(function(d, i) {
+             return i * 80;
+           })
+           .ease("elastic").duration(3000)
+           .style('opacity', 0.9)
+           .attr("y", function(d){
+             return d.y;
+           });
+
+       svg.append("text")
+           .text("Let Tech@NYU help you spread the love")
+           .style("font-size", 20)
+           .attr("font-family", 'Dancing Script', 'cursive')
+           .attr("x", 150)
+           .attr("y", 140);
+</script>
