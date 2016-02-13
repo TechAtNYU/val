@@ -5,6 +5,14 @@ angular.module('hackvdayApp')
     $scope.phoneValidation = /^\d{10}$/;
     var ref = new Firebase('https://techatnyuval.firebaseio.com/deliveries');
     $scope.deliveries = $firebaseArray(ref);
+    $scope.formOffline = false;
+    var syncObject = $firebaseObject(ref);
+    syncObject.$loaded().then(function() {
+        var currentRose = Object.keys(syncObject) - 3;
+        if (currentRose > 75) {
+            $scope.formOffline = true;
+        }
+    });
     $scope.delivery = {};
     $scope.dorms = [
         'Alumni Hall', 'Brittany Hall', 'Broome Street', 'Carlyle Court',

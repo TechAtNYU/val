@@ -58,6 +58,18 @@ body {
     }
 }
 
+#offline {
+    color: #800000;
+    text-align: center;
+    h1 {
+        font-family: cursive;
+        font-size: 4em;
+    }
+    p {
+        font-size: 1.2em;
+    }
+}
+
 #thanks {
     color: #800000;
     text-align: center;
