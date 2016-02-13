@@ -27,11 +27,6 @@ angular.module('hackvdayApp')
         $scope.delivery = {};
         $scope.deliveryForm.$setPristine();
         $scope.formSuccess = true;
-
-        /* hacky, can't get thanks text to show without it. */
-        console.log($scope.formSuccess);
-
-        $location.hash('top');
         $anchorScroll();
       };
   });
