@@ -6,6 +6,7 @@ angular.module('hackvdayApp')
     var ref = new Firebase('https://techatnyuval.firebaseio.com/deliveries');
     $scope.deliveries = $firebaseArray(ref);
     $scope.formOffline = false;
+    $scope.siteClosed = true;
     var syncObject = $firebaseObject(ref);
     syncObject.$loaded().then(function() {
         var currentRose = Object.keys(syncObject) - 3;
